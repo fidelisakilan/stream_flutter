@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.yellow,
                 onPressed: ()async{ 
                  Stream stream = controller.stream; 
-              stream.listen((value) {
+              streamSubscription=stream.listen((value) {
               print('Value from controller: $value');
             });
               }),

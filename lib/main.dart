@@ -31,10 +31,13 @@ class _MyAppState extends State<MyApp> {
                 child: Text('Subscribe'),
                 color: Colors.yellow,
                 onPressed: ()async{ 
-                 Stream stream = controller.stream; 
-              streamSubscription=stream.listen((value) {
-              print('Value from controller: $value');
-            });
+              //    Stream stream = controller.stream; 
+              // streamSubscription=stream.listen((value) {
+              // print('Value from controller: $value');
+            // });
+              streamSubscription=getDelayedRandomVlue().listen((value){
+                print('value from the function random :$value');
+              });
               }),
               MaterialButton(
                 child: Text('Emit values'),
@@ -55,12 +58,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  // Stream<double> getDelayedRandomVlue()async*{
-  //   var random =Random();
-  //   while(true){
-  //   await Future.delayed(Duration(seconds: 1));
-  //   yield random.nextDouble();
-  //   }
-  // }
+  Stream<double> getDelayedRandomVlue()async*{
+    var random =Random();
+    while(true){
+    await Future.delayed(Duration(seconds: 1));
+    yield random.nextDouble();
+    }
+  }
 }
 
